@@ -2,10 +2,10 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #000000;
 }
 
-@theme inline {
+/*@theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
@@ -17,10 +17,93 @@
     --background: #0a0a0a;
     --foreground: #ededed;
   }
-}
+}*/
 
 body {
-  background: var(--background);
+  background: #F2EDD0;
+  background: linear-gradient(0deg, rgba(242, 237, 208, 1) 0%, rgba(247, 242, 217, 1) 100%);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+textarea {
+  resize: none
+}
+
+.link-underline {
+  border-bottom-width: 0;
+  background-image: linear-gradient(transparent, transparent), linear-gradient(rgb(242,205,92), rgb(242,205,92));
+  background-size: 0 2.5px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size .3s ease-in-out;
+}
+
+.link-underline:hover {
+  background-size: 100% 2.5px;
+  background-position: 0 100%
+}
+
+.link-underline-mob {
+  border-bottom-width: 0;
+  background-image: linear-gradient(transparent, transparent), linear-gradient(rgb(0,0,0), rgb(0,0,0));
+  background-size: 0 2.5px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size .3s ease-in-out;
+}
+
+.link-underline-mob:hover {
+  background-size: 100% 2.5px;
+  background-position: 0 100%
+}
+
+input[type="checkbox"] {
+  appearance: none;
+  display: none;
+}
+
+input[type="checkbox"] + label {
+  position: relative;
+  padding-left: 30px;
+  cursor: pointer;
+  display: inline-block;
+  color: #000;
+  margin-left: 12px;
+}
+
+/* Custom checkbox appearance */
+input[type="checkbox"] + label::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #F2CD5C;
+  border-radius: 4px;
+  background-color: white;
+  transition: background-color 0.2s ease, border 0.2s ease;
+}
+
+/* When checkbox is checked */
+input[type="checkbox"]:checked + label::before {
+  background-color: #F2CD5C;
+  border-color: #F2CD5C;
+}
+
+/* Custom checkmark */
+input[type="checkbox"]:checked + label::after {
+  content: "\2713";
+  position: absolute;
+  left: 2.5px;
+  top: -1.5px;
+  font-size: 16px;
+  color: black;
+  transition: color 0.2s ease;
+}
+
+/* Hover effect */
+input[type="checkbox"]:hover + label::before {
+  border-color: #FCDD81;
 }
