@@ -36,7 +36,7 @@ export default function Hero() {
 
     const [isChecked, setIsChecked] = useState(false)
 
-
+    const [secretToken, setSecretToken] = useState(null)
     // submitData function takes the user's text sends it to
     // the API for inference with POST request
     const submitData = async () => {
@@ -66,6 +66,12 @@ export default function Hero() {
             if (!response.ok) {
                 throw new Error('Failed to get prediction');
             }
+
+            const secretHeader = response.headers.get('x-secret-token');
+            if (secretHeader) {
+                setSecretToken(secretHeader);
+            }
+
         } catch (err) {
             setLoading(false);
             setError(true);
@@ -94,19 +100,23 @@ export default function Hero() {
             }),
             headers: {
                 'Content-Type': 'application/json',
+                'x-secret-token': secretToken || '',
             },
             });
 
             const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error('Failed to submit feedback');
+            }
+
             if (data.message === 'Feedback submitted successfully') {
                 return "ok"
             } else {
                 return "error"
             }
 
-            if (!response.ok) {
-            throw new Error('Failed to submit feedback');
-            }
+
         } catch (err) {
             setPopupLoad(false);
             setPopupContent('error');
@@ -272,11 +282,11 @@ export default function Hero() {
             alt="Logo Image"
             />
             <p className="text-xs text-[#BF0404] p-4">bad and offensive language identification</p>
-            <div className="relative w-full px-20">
+            <div className="relative w-full px-5 md:px-20">
                 <textarea
                     aria-label="Enter Text"
-                    rows="4"
-                    className="block bg-amber-50 border border-2 border-amber-300 py-8 pr-30 pl-10 mb-2 w-full text-sm rounded-4xl shadow-[0px_4px_25px_0px_rgba(242,205,92,0.20)]
+                    rows="3.5"
+                    className="block bg-amber-50 border border-2 border-amber-300 py-8 pr-20 md:pr-30 pl-10 md:pl-10 mb-2 w-full text-sm rounded-4xl shadow-[0px_4px_25px_0px_rgba(242,205,92,0.20)]
                                 focus:border focus:border-2 focus:border-[#BF0404] focus:shadow-[0px_4px_25px_0px_rgba(191,4,4,0.20)]"
                     type="text"
                     value={text}
@@ -285,7 +295,7 @@ export default function Hero() {
                 />
                 <button
                     aria-label="Submit Text"
-                    className="absolute top-6 right-30 px-2 rounded-full py-2 bg-[#F7F2D9] text-zinc-700
+                    className="absolute top-6 right-10 md:top-6 md:right-30 px-2 rounded-full py-2 bg-[#F7F2D9] text-zinc-700
                     disabled:bg-[#D7D3BA] disabled:text-zinc-500 disabled:cursor-not-allowed
                     hover:bg-amber-300 hover:text-black hover:cursor-pointer hover:transition hover:duration-300
                     focus:bg-black focus:text-amber-50"
@@ -316,17 +326,17 @@ export default function Hero() {
                 </div>
             )}
 
-            <div className="flex mt-4 w-3/4 justify-center">
+            <div className="flex mt-4 w-full md: w-3/4 justify-center">
                 {!loading && !error && responseData && (
-                    <div className="flex flex-col m-4 justify-center">
+                    <div className="flex flex-col m-0 md:m-4 justify-center">
                         <div className="flex justify-center">
-                            <h2 className="text-md py-2 px-2">Prediction: </h2>
-                            <p className={`font-bold py-2 px-4 
+                            <h2 className="text-sm md:text-md py-2 px-2">Prediction: </h2>
+                            <p className={`font-bold text-xs md:text-[1rem] py-2 px-4 
                             ${responseData === "NON-HATE" ? 'bg-[#BBDB9A] border border-[#16D546]' : 'bg-[#E6999A] border border-[#EB0E12]'}
                             rounded-lg`}>{responseData}</p>
                         </div>
-                        <div className="flex mt-8 justify-center">
-                            <h2 className="text-xs md:text-sm py-2 md:py-3 px-2">Do you agree with the label? </h2>
+                        <div className="flex mt-5 md:mt-8 justify-center">
+                            <h2 className="text-xs md:text-sm py-1 md:py-3 px-2">Do you agree with the label? </h2>
                             <button className="font-bold text-xs md:text-sm px-5 ml-2 bg-amber-50 border border-amber-300 rounded-lg shadow-[0px_4px_25px_0px_rgba(242,205,92,0.20)]
                             hover:bg-amber-300 hover:text-black hover:transition hover:duration-300 hover:border hover:border-amber-300 hover:cursor-pointer
                             focus:bg-black focus:text-amber-50 focus:border focus:border-black" 
@@ -353,7 +363,7 @@ export default function Hero() {
                     </div>
                 )}
 
-            <footer className="flex flex-col absolute bottom-20 md:bottom-4 items-center justify-center w-5/6 md:w-2/4 text-black">
+            <footer className="flex flex-col absolute bottom-6 md:bottom-4 items-center justify-center w-5/6 md:w-2/4 text-black">
                 <hr className="h-0.2 w-3/4 bg-[#FCDD81] border border-[#FCDD81] mb-4"></hr>
                 <div className="flex flex-col items-center justify-center">
                     <p className="text-[0.6rem] md:text-[0.7rem] pb-2">This project is designed and developed for the Masters Thesis Submission 
