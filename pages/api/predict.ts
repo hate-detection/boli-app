@@ -1,4 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
+import { getSecretToken } from '@/lib/tokenManager';
+import { createHash } from 'node:crypto';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse): Promise<void> {
   // Ensure it's a POST request
@@ -28,6 +30,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     const data = await response.json();
+    const prediction = data.label[0];
     let result: { label: string; prediction: number };
 
     if (data.label.includes(1)) {
@@ -38,6 +41,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       return res.status(400).json({ message: 'Unexpected label data' });
     }
 
+    // secret-token generation
+    const secretToken = getSecretToken();   // get current secret token
+    const hash = createHash('sha256');      // create an sha256 hash
+    hash.update(text)                       // update the hash with the text
+    hash.update(String(prediction))         // add prediction
+    hash.update(secretToken)                // add secret token
+    const digest = hash.digest('hex');      // create final digest
+
+    res.setHeader('x-secret-token', digest) // send the digest with the headers
     return res.status(200).json(result);
 
   } catch (error) {

@@ -1,4 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
+import { getSecretToken } from '@/lib/tokenManager';
+import { createHash } from 'node:crypto';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse): Promise<void> {
   // Ensure it's a POST request
@@ -7,7 +9,20 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   try {
+
+    // secret-token check
+    const secretToken = getSecretToken()                      // get current token
     const { text, predicted, feedback, feedtext } = req.body;
+    const tokenCheck = req.headers['x-secret-token'] as string; // get secret-token from header
+    const hash = createHash('sha256');                          // create an sha256 hash
+    hash.update(text)                                           // update the hash with text
+    hash.update(String(predicted))                              // update with the prediction
+    hash.update(secretToken)                                    // update with secretToken
+    const digest = hash.digest('hex')                           // create final digest
+
+    if (tokenCheck != digest) {                                 // if the header does not match
+      return res.status(403).json({ message: 'Not Authenticated'})  // digest, send 403 error
+    }
 
     const backendUrl: string = process.env.FEEDBACK_ENDPOINT as string;
 
