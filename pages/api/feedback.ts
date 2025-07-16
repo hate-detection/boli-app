@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { getSecretToken } from '@/lib/tokenManager';
 import { createHash } from 'node:crypto';
+import redis from '@/lib/redis';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse): Promise<void> {
   // Ensure it's a POST request
@@ -9,6 +10,17 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   try {
+    const requestIp = require('request-ip');
+    const clientIp = requestIp.getClientIp(req);
+    const requests = await redis.incr(clientIp); // Increment request count
+    
+    if (requests === 1) {
+        await redis.expire(clientIp, 60); // Set expiration to 1 minute
+    }
+
+    if (requests > 50) {                  // Only 50 requests per minute       
+        return res.status(429).json({ message: 'Rate Limit Exceeded'})
+    }
 
     // secret-token check
     const secretToken = getSecretToken()                      // get current token
