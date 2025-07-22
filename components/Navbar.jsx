@@ -17,15 +17,7 @@ const Navbar = () => {
   const [nav, setNav] = useState(false);
 
   return (
-    <nav className={`flex justify-between items-center w-full h-12 pt-6 px-4 md:px-26 fixed text-black z-10`}>
-        <div
-            className={cn(
-            "absolute inset-0",
-            "[background-size:20px_20px]",
-            "[background-image:radial-gradient(#FCDD81_1px,transparent_1px)]",
-            "-z-20"
-            )}
-        />
+    <nav className="flex justify-between items-center w-full h-12 bg-[#F2EDD0]/20 backdrop-blur-[2px] py-8 px-4 md:px-26 fixed text-black z-10">
       {/* Desktop Menu */}
       <div>
         <motion.div
@@ -56,7 +48,7 @@ const Navbar = () => {
               about
             </li>
           </Link>
-          <Link href='#' className="nav-links hover:cursor-pointer mx-4 font-bold link-underline border border-2 border-transparent focus:border focus:border-2 focus:border-amber-300">
+          <Link href='/privacy-policy' className="nav-links hover:cursor-pointer mx-4 font-bold link-underline border border-2 border-transparent focus:border focus:border-2 focus:border-amber-300">
             <li className="">
               privacy policy
             </li>
@@ -78,14 +70,14 @@ const Navbar = () => {
         animate={nav ? "open" : "closed"}
         variants={variants}
         transition={{ duration: 0.3 }}
-        className="flex flex-col justify-center items-center absolute top-0 left-0 w-full h-screen bg-amber-300"
+        className="flex flex-col justify-start pt-46 items-center absolute top-0 left-0 w-full h-screen bg-amber-300"
       >
         <Link href='/about' className="nav-links p-4 border border-3 border-transparent cursor-pointer text-2xl link-underline-mob focus:border-black">
           <li className="">
             about
           </li>
         </Link>
-        <Link href='#' className="nav-links p-4 border border-3 border-transparent cursor-pointer text-2xl link-underline-mob focus:border-black">
+        <Link href='/privacy-policy' className="nav-links p-4 border border-3 border-transparent cursor-pointer text-2xl link-underline-mob focus:border-black">
           <li className="">
             privacy policy
           </li>

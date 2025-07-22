@@ -22,6 +22,9 @@ export default function Hero() {
     const [isSubmit, setIsSubmit] = useState(false);
     const [error, setError] = useState(false);
 
+    const [ageChecked, setAgeChecked] = useState(false);
+    const [privacyChecked, setPrivacyChecked] = useState(false);
+    const [consentChecked, setConsentChecked] = useState(false);
     // set states for feedback submission button
     const [userText, setuserText] = useState('')
     const [pred, setPred] = useState('')
@@ -32,7 +35,7 @@ export default function Hero() {
     // set popup states
     const [popup, setPopup] = useState('')
     const [popupLoad, setPopupLoad] = useState(false);
-    const [popupContent, setPopupContent] = useState('initial')
+    const [popupContent, setPopupContent] = useState('privacy')
 
     const [isChecked, setIsChecked] = useState(false)
 
@@ -173,11 +176,126 @@ export default function Hero() {
         setPopup("")
         setPopupContent('initial')
         setIsChecked(false)
+        setAgeChecked(false)
+        setPrivacyChecked(false)
+        setConsentChecked(false)
     }
 
 
     const renderContent = () => {
         switch(popupContent) {
+            case 'privacy':
+                return (
+                    <>
+                        <button
+                            className="absolute top-6 right-12 px-2 rounded-full py-2 bg-amber-50 text-black
+                            hover:bg-amber-300 hover:text-black hover:cursor-pointer hover:transition hover:duration-300
+                            focus:bg-black focus:text-amber-50"
+                            onClick={() => setPopup("")}    // close popup on click
+                            aria-label="Close Popup"
+                        >
+                            <RiCloseLine size={20} aria-label="Close Button"/>
+                        </button>
+                        <div className="overflow-y-scroll w-[15rem] md:w-[22rem] h-[18rem]">
+                            <h2 className="font-bold text-lg pt-5 pb-3">Privacy Policy: TL;DR</h2>
+                            <p className="text-sm">We have created a policy that's actually readable and not filled with legal jargon. We urge you to read it in full, it's super simple, we promise. However, if you are short on time, read this even simpler version.
+                            <br></br><br></br>
+                            <Link href="/privacy-policy" className="link-underline font-bold" target="_blank">Read the detailed Privacy Policy</Link>.
+                            <br></br><br></br>
+                            This privacy statement ("Privacy Policy") covers all websites (such as www.bolii.xyz) owned and operated by BOLI ("We", "Us", "Our") and all associated services.
+                            <br></br><br></br>
+                            We use information you share with us for our internal business purposes. We do not sell your information. This notice tells you what information we collect, how we use it and the steps we take to protect and secure it.</p>
+
+                            <h3 className="font-bold text-md py-3">What data do we collect? How do we collect it?</h3>
+                            <h4 className="text-sm text-gray-600 pb-3">Information we automatically collect.</h4>
+                            <ul className="text-sm list-disc pl-5" role="list">
+                                <li className="list-disc">Information such as browser type, language preferences, referring site are automatically sent by your browser. We do not store this.</li>
+                                <li className="list-disc">IP Addresses for rate limiting. Automatically removed as soon as the rate-limiting time frame expires.</li>
+                            </ul>
+                            <br></br>
+                            <p className="italic font-bold text-xs bg-yellow-300">The following subsection is identical in both Privacy Policy: TL;DR and Privacy Policy: Full since we would like you to have complete information and make an informed choice.</p>
+                            <h4 className="text-sm text-gray-600 py-3">Information you provide by using our service.</h4>
+                            <p className="text-sm"><span className="font-bold">Prediction Text Box.</span><br></br><br></br>
+The primary (and only) goal of our website is to let you access the Machine Learning model in the backend for Sentiment Analysis and Hate Speech detection. The data you enter in the <span className="font-bold">Prediction Text Box</span> is passed to the model. This model has been pre-trained on publicly available data to recognise hate speech patterns. The model analyses the text you provide and predicts a label.<br></br><br></br>
+<span className="italic font-bold">A note on the model's predictions:</span> Machine Learning is, at its core, just a measure of probability and likelihood. When the model analyses a piece of text, it determines the <span className="italic font-bold">likelihood</span> of this text being hate or non-hate based on previously learned identifiers. Thus, the predicted labels are <span className="font-bold">not</span> the sole absolute truth. Consequently, the model's predictions <span className="font-bold">cannot</span> be used against a person or an entity.</p>
+                            <br></br>
+                            <p className="text-sm"><span className="font-bold">Feedback Text Box.</span><br></br><br></br>
+                            If you do not agree with the predicted label, you may provide us with your feedback. We value the feedback you provide and may use it to improve our model's performance. Providing feedback is <span className="font-bold">strictly optional</span>. The text you enter in the <span className="font-bold">Prediction Text Box</span> will be stored <span className="font-bold">only</span> if you choose to provide us with any feedback. This feedback is collected in two stages.</p>
+                            <br></br>
+                            <ol className="list-decimal pl-10 text-sm" role="list">
+                                <li>You may click the "Yes" or "No" button. This is stored as an anonymized numeric value (1 or 0) to evaluate model accuracy. </li>
+                                <li>You may enter your feedback in the <span className="font-bold">Feedback Text Box</span>. We store this feedback for <span className="font-bold">90 days</span> to analyse and enhance model performance. Please <span className="font-bold">do not include</span> any personal information in this text box. If you believe you have entered sensitive data by mistake, contact us at <Link href="mailto:boli-app@proton.me" className="link-underline font-bold" target="_blank">boli-app@proton.me</Link>. We will delete the data within 30 days of receiving your request. Otherwise, all feedback data is automatically deleted after 90 days and is accessible only to authorized administrators.</li>
+                            </ol>
+
+                            <h3 className="font-bold text-md py-3">How will we use your data?</h3>
+                            <ul className="text-sm list-disc pl-5" role="list">
+                                <li>To understand the model's shortcomings in label prediction.</li>
+                                <li>To annotate the data.</li>
+                                <li>To clean and tokenize the data for further model training.</li>
+                            </ul>
+
+                            <h3 className="font-bold text-md py-3">How do we store your data?</h3>
+                            <p className="text-sm">We store the data in a PostgreSQL database at Supabase. Read the <Link href="https://supabase.com/privacy" target="_blank" className="font-bold link-underline">Supabase Privacy Policy</Link>. 
+                            Data from <span className="font-bold">Prediction Text Box</span> is deleted after 180 days while data from the <span className="font-bold">Feedback Text Box</span> is deleted after 90 days. If you wish to request deletion of your data, contact us at <Link href="mailto:boli-app@proton.me" className="link-underline font-bold" target="_blank">boli-app@proton.me</Link> and we will delete your data within 30 days from 
+                                the date of request.</p>
+                            <br></br>
+                            <p className="text-sm">Before storage we will:</p><br></br>
+                            <ul className="text-sm list-disc pl-5" role="list">
+                                <li>Apply anonymisation and pseudonymisation techniques.</li>
+                                <li>Tokenize the data for the BERT-based Machine Learning model.</li>
+                            </ul>
+
+                            <h3 className="font-bold text-md py-3">Cookies.</h3>
+                            <p className="text-sm">Cookies are text files placed on your computer to collect standard Internet log information and visitor behavior information.</p>
+
+                            <h3 className="font-bold text-md py-3">How do we use cookies?</h3>
+                            <p className="text-sm">We use cookies for:</p><br></br>
+                            <ol className="list-decimal pl-10 text-sm" role="list">
+                                <li>Implementing security mechanisms.</li>
+                                <li>Improving your website browsing experience.</li>
+                            </ol>
+
+                            <h3 className="font-bold text-md py-3">What types of cookies do we use?</h3>
+                            <p className="text-sm">We use a Secret Token based purely on mathematical calculations. This token <span className="font-bold">does not</span> store any user-specific or personally identifiable information.</p>
+
+                            <h3 className="font-bold text-md py-3">Age Limits and Children's data.</h3>
+                            <p className="text-sm">Our services are <span className="font-bold">not</span> intended to be used by individuals <span className="font-bold">below 18 years of age</span>. If you believe your child may have used this service, contact us at <Link href="mailto:boli-app@proton.me" className="link-underline font-bold" target="_blank">boli-app@proton.me</Link> and we will delete all data 
+                            pertaining to your child within 30 days from the date of request.</p>
+
+                            <h3 className="font-bold text-md py-3">Confidentiality and Security.</h3>
+                            <p className="text-sm">If we learn of a system security breach, we will notify all users via a public announcement. Depending on where you live, you may have a legal right to receive notice of a security breach in writing. 
+                                To receive free written notice, you can contact us at <Link href="mailto:boli-app@proton.me" className="link-underline font-bold" target="_blank">boli-app@proton.me</Link>.</p>
+
+                            <h3 className="font-bold text-md py-3">Changes to our privacy policy.</h3>
+                            <p className="text-sm">BOLI keeps its privacy policy under regular review and places any updates on this web page. 
+                                This privacy policy was last updated on 21 July 2025.</p>
+
+                            <h3 className="font-bold text-md py-3">Consent.</h3>
+                            <input type="checkbox" name="age" 
+                                checked={ageChecked} 
+                                onChange={() => setAgeChecked(prev => !prev)}  
+                                id="ageCheckbox"></input>
+                            <label htmlFor="ageCheckbox" className="text-xs pt-0 md:pt-0.5"><span className="font-bold">I confirm</span> that I am above 18 years of age.</label>
+                            <input type="checkbox" name="age" 
+                                checked={privacyChecked} 
+                                onChange={() => setPrivacyChecked(prev => !prev)}  
+                                id="privCheckbox"></input>
+                            <label htmlFor="privCheckbox" className="text-xs pt-0 md:pt-0.5"><span className="font-bold">I confirm</span> that I have read and understood the Privacy Policy.</label>
+                            <input type="checkbox" name="age" 
+                                checked={consentChecked} 
+                                onChange={() => setConsentChecked(prev => !prev)}  
+                                id="consentCheckbox"></input>
+                            <label htmlFor="consentCheckbox" className="text-xs pt-0 md:pt-0.5"><span className="font-bold">I consent</span> to the storage and processing of the data provided in the <span className="font-bold">Prediction Text Box</span> and the <span className="font-bold">Feedback Text Box</span>.</label>
+                        </div>
+                        <button onClick={() => setPopupContent('initial')} className="font-bold text-sm w-1/3 items-center mt-4 px-4 md:px-6 py-3 bg-amber-50 border border-2 border-amber-300 rounded-xl shadow-[0px_4px_25px_0px_rgba(242,205,92,0.20)
+                        hover:bg-amber-300 hover:text-black hover:border hover:border-2 hover:border-amber-300 hover:cursor-pointer hover:transition hover:duration-300
+                        focus:bg-black focus:text-amber-50 focus:border focus:border-2 focus:border-black
+                        disabled:bg-[#D7D3BA] disabled:border-2 disabled:border-[#D7D3BA] disabled:text-zinc-500 disabled:cursor-not-allowed"
+                        disabled={!ageChecked || !privacyChecked || !consentChecked}>
+                            I AGREE
+                        </button>
+                    </>
+                )
             // initial popupContent with the textarea and submit button
             case 'initial':
                 return (
@@ -204,7 +322,7 @@ export default function Hero() {
                             onChange={e => setfeedText(e.target.value)}  // change feedText to user value
                             placeholder="enter feedback"
                         />
-                        <button onClick={handleFeedbackSumit} className="font-bold text-sm w-1/3 items-center mt-4 px-6 py-3 bg-amber-50 border border-2 border-amber-300 rounded-xl shadow-[0px_4px_25px_0px_rgba(242,205,92,0.20)
+                        <button onClick={handleFeedbackSumit} className="font-bold text-sm w-1/3 items-center mt-4 px-4 md:px-6 py-3 bg-amber-50 border border-2 border-amber-300 rounded-xl shadow-[0px_4px_25px_0px_rgba(242,205,92,0.20)
                         hover:bg-amber-300 hover:text-black hover:border hover:border-2 hover:border-amber-300 hover:cursor-pointer hover:transition hover:duration-300
                         focus:bg-black focus:text-amber-50 focus:border focus:border-2 focus:border-black">
                             SUBMIT
@@ -245,7 +363,7 @@ export default function Hero() {
                         <p className="text-[0.7rem] mt-8">There's probably a problem in the backend,</p>
                         <p className="text-[0.7rem]">how about you get a coffee while we fix it.</p>
                         <button
-                            className="font-bold text-sm w-1/3 items-center mt-5 px-5 py-3 bg-amber-50 border border-2 border-amber-300 rounded-xl shadow-[0px_4px_25px_0px_rgba(242,205,92,0.20)]
+                            className="font-bold text-sm w-1/3 items-center mt-5 px-4 md:px-5 py-3 bg-amber-50 border border-2 border-amber-300 rounded-xl shadow-[0px_4px_25px_0px_rgba(242,205,92,0.20)]
                             hover:bg-amber-300 hover:text-black hover:border hover:border-2 hover:border-amber-300 hover:cursor-pointer hover:transition hover:duration-300
                             focus:bg-black focus:text-amber-50 focus:border focus:border-2 focus:border-black"
                             onClick={handleReset}
@@ -274,7 +392,7 @@ export default function Hero() {
 
     
     return (
-        <div id="hero" className="flex flex-col w-full items-center h-screen justify-start pt-5">
+        <div id="hero" className="flex flex-col w-full items-center h-screen justify-start pt-6 md:pt-10">
             <Image
             src={logo}
             height={120}
@@ -312,7 +430,7 @@ export default function Hero() {
                 checked={isChecked} 
                 onChange={() => setIsChecked(prev => !prev)}  
                 id="privacyCheckbox"></input>
-                <label htmlFor="privacyCheckbox" className="text-[0.6rem] md:text-xs pt-0 md:pt-0.5">I have read the understood the <Link href="#" className="link-underline border border-2 border-transparent focus:border-amber-300">Privacy Policy</Link>.</label>
+                <label htmlFor="privacyCheckbox" className="text-[0.6rem] md:text-xs pt-0 md:pt-0.5">I have read the understood the <Link href="/privacy-policy" className="link-underline border border-2 border-transparent focus:border-amber-300 font-bold">Privacy Policy</Link>.</label>
             </div>
 
             
@@ -326,7 +444,7 @@ export default function Hero() {
                 </div>
             )}
 
-            <div className="flex mt-4 w-full md: w-3/4 justify-center">
+            <div className="flex mt-5 md:mt-4 w-full md: w-3/4 justify-center">
                 {!loading && !error && responseData && (
                     <div className="flex flex-col m-0 md:m-4 justify-center">
                         <div className="flex justify-center">

@@ -6,14 +6,6 @@ export default function Home() {
   return (
     <>
       <main className="flex flex-col h-screen w-screen items-center justify-center p-10 overflow-y-hidden">
-        <div
-        className={cn(
-          "absolute inset-0",
-          "[background-size:20px_20px]",
-          "[background-image:radial-gradient(#FCDD81_1px,transparent_1px)]",
-          "-z-10"
-        )}
-      />
         <Hero />
       </main>
     </>
