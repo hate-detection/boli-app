@@ -41,11 +41,11 @@ export default function PrivacyPolicy() {
             <h3 className="text-lg text-gray-600 pb-5">Information we automatically collect.</h3>
             <p className="text-sm pb-5"><span className="font-bold">Non-personally-identifying.</span><br></br><br></br>
                 Some essential information such as browser type, language preferences and referring site is automatically sent by your browser 
-                when you visit our website. We do not store or process this data.
+                when you visit our website. We <span className="font-bold">do not</span> store or process this data.
             </p>
             <p className="text-sm"><span className="font-bold">Personally identifying.</span><br></br><br></br>
                 To protect our site from abuse such as Denial of Service (DoS) attacks, we implement rate limiting mechanisms. 
-                These mechanisms temporarily collect personally identifying information i.e. your IP Address, 
+                These mechanisms temporarily collect personally identifying information i.e. <span className="font-bold">your IP Address</span>, 
                 to prevent you from making too many requests in a given time-frame. Your IP Address is automatically deleted the moment 
                 this time-frame expires.<br></br><br></br>
                 We <span className="font-bold">do not</span> use IP Addresses to track users beyond this scope.
@@ -67,7 +67,7 @@ export default function PrivacyPolicy() {
             <br></br><br></br>
             <p className="text-sm pb-5"><span className="font-bold">Feedback Text Box.</span><br></br><br></br>
                 If you do not agree with the predicted label, you may provide us with your feedback. We value the feedback you provide and may 
-                use it to improve our model's performance. Providing feedback is <span className="font-bold">strictly optional.</span> 
+                use it to improve our model's performance. Providing feedback is <span className="font-bold">strictly optional</span>.
                 The text you enter in the <span className="font-bold">Prediction Text Box</span> will be stored only if you choose to provide us 
                 with any feedback. This feedback is collected in two stages.
             </p>
@@ -75,8 +75,8 @@ export default function PrivacyPolicy() {
                 <li>You may click the "Yes" or "No" button. This is stored as an anonymized numeric value (1 or 0) to evaluate model 
                     accuracy.</li>
                 <li>You may enter your feedback in the <span className="font-bold">Feedback Text Box</span>. We store this feedback 
-                    for <span className="font-bold">90</span> days to analyse and enhance model's performance. Please 
-                    <span className="font-bold">do not include</span> any personal information in this text box. If you believe you have 
+                    for <span className="font-bold">90 days</span> to analyse and enhance model's performance. Please <span
+                    className="font-bold">do not include</span> any personal information in this text box. If you believe you have 
                     entered sensitive data by mistake, contact us at <Link href="mailto:boli-app@proton.me" className="link-underline font-bold"
                     target="_blank">boli-app@proton.me</Link>. We will delete the data within 30 days of receiving your 
                     request. Otherwise, all feedback data is automatically deleted after 90 days and is accessible only to authorized 
@@ -106,7 +106,7 @@ export default function PrivacyPolicy() {
                 <br></br><br></br>
                 Tokenization is the process of turning raw data into integers (e.g. 12 for "the"). Tokenization for BERT-based models ensures 
                 anonymity since the same word is tokenized as different integers based on the context. The raw data collected from the  
-                <span className="font-bold"> Prediction Text Box</span> is deleted after 180 days from the date of collection.
+                <span className="font-bold"> Prediction Text Box</span> is deleted after <span className="font-bold">180 days</span> from the date of collection.
                 <br></br><br></br>
                 We <span className="font-bold">do not</span> associate the text or the feedback with your IP Address and/or session. 
             </p>
@@ -178,7 +178,7 @@ export default function PrivacyPolicy() {
             <h3 className="text-lg text-gray-600 pb-3">Information we automatically collect.</h3>
             <ul className="text-sm list-disc pl-10" role="list">
                 <li className="list-disc">Information such as browser type, language preferences, referring site are automatically sent by your 
-                browser. We do not store this.</li>
+                browser. We <span className="font-bold">do not</span> store this.</li>
                 <li className="list-disc">IP Addresses for rate limiting. Automatically removed as soon as the rate-limiting time frame 
                 expires.</li>
             </ul>
@@ -195,15 +195,15 @@ export default function PrivacyPolicy() {
                 provide and predicts a label. 
                 <br></br><br></br>
                 <span className="font-bold italic">A note on the model's predictions:</span> Machine Learning is, at its core, just a measure of 
-                probability and likelihood. When the model analyses a piece of text, it determines the 
-                <span className="font-bold italic">likelihood</span> of this text being hate or non-hate based on previously learned identifiers. 
+                probability and likelihood. When the model analyses a piece of text, it determines the <span
+                className="font-bold italic">likelihood</span> of this text being hate or non-hate based on previously learned identifiers. 
                 Thus, the predicted labels are <span className="font-bold">not</span> the sole absolute truth. Consequently, the model's 
                 predictions <span className="font-bold">cannot</span> be used against a person or an entity.
             </p>
             <br></br><br></br>
             <p className="text-sm pb-5"><span className="font-bold">Feedback Text Box.</span><br></br><br></br>
                 If you do not agree with the predicted label, you may provide us with your feedback. We value the feedback you provide and may 
-                use it to improve our model's performance. Providing feedback is <span className="font-bold">strictly optional.</span> 
+                use it to improve our model's performance. Providing feedback is <span className="font-bold">strictly optional</span>. 
                 The text you enter in the <span className="font-bold">Prediction Text Box</span> will be stored only if you choose to provide us 
                 with any feedback. This feedback is collected in two stages.
             </p>
@@ -211,7 +211,7 @@ export default function PrivacyPolicy() {
                 <li>You may click the "Yes" or "No" button. This is stored as an anonymized numeric value (1 or 0) to evaluate model 
                     accuracy.</li>
                 <li>You may enter your feedback in the <span className="font-bold">Feedback Text Box</span>. We store this feedback 
-                    for <span className="font-bold">90</span> days to analyse and enhance model's performance. Please <span className="font-bold">
+                    for <span className="font-bold">90 days</span> to analyse and enhance model's performance. Please <span className="font-bold">
                     do not include</span> any personal information in this text box. If you believe you have entered sensitive data by mistake, 
                     contact us at <Link href="mailto:boli-app@proton.me" className="link-underline font-bold" target="_blank">boli-app@proton.me</Link>. 
                     We will delete the data within 30 days of receiving your request. 
@@ -222,8 +222,8 @@ export default function PrivacyPolicy() {
             <h2 className="font-bold text-xl py-5">How do we store your data?</h2>
             <p className="text-sm">We store the data in a PostgreSQL database at Supabase. Read the <Link href="https://supabase.com/privacy" 
                 target="_blank" className="font-bold link-underline">Supabase Privacy Policy</Link>. 
-                Data from <span className="font-bold">Prediction Text Box</span> is deleted after 180 days while data from the <span 
-                className="font-bold">Feedback Text Box</span> is deleted after 90 days. If you wish to request deletion of your data, contact us 
+                Data from <span className="font-bold">Prediction Text Box</span> is deleted after <span className="font-bold">180 days</span> while data from the <span 
+                className="font-bold">Feedback Text Box</span> is deleted after <span className="font-bold">90 days</span>. If you wish to request deletion of your data, contact us 
                 at <Link href="mailto:boli-app@proton.me" className="link-underline font-bold" target="_blank">boli-app@proton.me</Link> and 
                 we will delete your data within 30 days from the date of request.
                 <br></br><br></br>
