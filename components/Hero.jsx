@@ -397,6 +397,8 @@ The primary (and only) goal of our website is to let you access the Machine Lear
             src={logo}
             height={120}
             width={120}
+            quality={100}
+            placeholder="empty"
             alt="Logo Image"
             />
             <p className="text-xs text-[#BF0404] p-4">bad and offensive language identification</p>
@@ -404,12 +406,12 @@ The primary (and only) goal of our website is to let you access the Machine Lear
                 <textarea
                     aria-label="Enter Text"
                     rows="3.5"
-                    className="block bg-amber-50 border border-2 border-amber-300 py-8 pr-20 md:pr-30 pl-10 md:pl-10 mb-2 w-full text-sm rounded-4xl shadow-[0px_4px_25px_0px_rgba(242,205,92,0.20)]
+                    className="block bg-amber-50 border border-2 border-amber-300 py-8 pr-20 md:pr-30 pl-10 md:pl-10 mb-2 w-full text-xs md:text-sm rounded-4xl shadow-[0px_4px_25px_0px_rgba(242,205,92,0.20)]
                                 focus:border focus:border-2 focus:border-[#BF0404] focus:shadow-[0px_4px_25px_0px_rgba(191,4,4,0.20)]"
                     type="text"
                     value={text}
                     onChange={handleChange}
-                    placeholder="enter text"
+                    placeholder="enter text for hate speech detection"
                 />
                 <button
                     aria-label="Submit Text"
@@ -486,7 +488,7 @@ The primary (and only) goal of our website is to let you access the Machine Lear
                 <div className="flex flex-col items-center justify-center">
                     <p className="text-[0.6rem] md:text-[0.7rem] pb-2">This project is designed and developed for the Masters Thesis Submission 
                     as part of the requirement for the award of MSc Cyber Security at Royal Holloway, University of London.</p>
-                    <Link href="#" className="flex items-center font-bold border border-2 border-transparent justify-center link-underline focus:border focus:border-2 focus:border-amber-300"><p className="text-[0.6rem] md:text-[0.7rem] pr-1">Read the thesis</p><MdArrowOutward size={10}/></Link>
+                    <Link href="/thesis" className="flex items-center font-bold border border-2 border-transparent justify-center link-underline focus:border focus:border-2 focus:border-amber-300"><p className="text-[0.6rem] md:text-[0.7rem] pr-1">Read the thesis</p><MdArrowOutward size={10}/></Link>
                 </div>
             </footer>
             </div>

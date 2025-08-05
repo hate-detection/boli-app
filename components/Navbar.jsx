@@ -21,7 +21,7 @@ const Navbar = () => {
       {/* Desktop Menu */}
       <div>
         <motion.div
-          initial={{ opacity: 0 }}
+          initial={{ opacity: 1 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.3 }}
         >
@@ -32,13 +32,15 @@ const Navbar = () => {
             width={50}
             height={50}
             priority={true}
+            quality={100}
+            placeholder="empty"
             className="flex ml-2 mt-2 md:ml-2 md:mt-2"
           />
           </Link>
         </motion.div>
       </div>
       <motion.ul
-        initial={{ opacity: 0 }}
+        initial={{ opacity: 1 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
       >
