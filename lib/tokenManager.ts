@@ -2,6 +2,15 @@ import { randomBytes } from "node:crypto";
 
 let currentSecretToken: string | null = null;
 let lastTokenGenerationTime: number = 0;
+let tokenUsageState = false; 
+
+export const getTokenUsageState = (): boolean => {
+  return tokenUsageState;
+};
+
+export const setTokenUsageState = (newState: boolean): void => {
+  tokenUsageState = newState;
+};
 
 // generate a new random token (32 bytes hex string)
 const generateSecretToken = (): string => {
@@ -16,8 +25,10 @@ const isTokenExpired = (): boolean => {
 // update or generate the secret token if it's expired
 export const getSecretToken = (): string => {
   if (isTokenExpired()) {
+    setTokenUsageState(false)
     currentSecretToken = generateSecretToken();
     lastTokenGenerationTime = Date.now();
   }
   return currentSecretToken!;
 };
+

@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { getSecretToken } from '@/lib/tokenManager';
+import { getSecretToken, setTokenUsageState } from '@/lib/tokenManager';
 import { createHash } from 'node:crypto';
 import redis from '@/lib/redis';
 
@@ -23,12 +23,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     const { text } = req.body;
+    const cleanedText = text.replace(/[\n\r\t]/gm, "");
 
     const backendUrl = process.env.PREDICT_ENDPOINT as string;
     
     const response = await fetch(backendUrl, {
       method: 'POST',
-      body: JSON.stringify({ text }),
+      body: JSON.stringify({ text : cleanedText }),                     // removing line breaks and tabs
       headers: {
         'Content-Type': 'application/json',
         'X-API-Key': process.env.API_KEY as string,
@@ -63,6 +64,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const digest = hash.digest('hex');      // create final digest
 
     res.setHeader('x-secret-token', digest) // send the digest with the headers
+    setTokenUsageState(true);               // set the token state to used
     return res.status(200).json(result);
 
   } catch (error) {
