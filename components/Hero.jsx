@@ -274,17 +274,38 @@ The primary (and only) goal of our website is to let you access the Machine Lear
                             <input type="checkbox" name="age" 
                                 checked={ageChecked} 
                                 onChange={() => setAgeChecked(prev => !prev)}  
-                                id="ageCheckbox"></input>
+                                id="ageCheckbox"
+                                className="sr-only"
+                                onKeyDown={(e) => {
+                                        if (e.key === 'Enter' || e.key === ' ') {
+                                        e.preventDefault(); // Prevent space from scrolling the page
+                                        setAgeChecked(prev => !prev); // Toggle checkbox state
+                                        }
+                                }}></input>
                             <label htmlFor="ageCheckbox" className="text-xs pt-0 md:pt-0.5"><span className="font-bold">I confirm</span> that I am above 18 years of age.</label>
                             <input type="checkbox" name="age" 
                                 checked={privacyChecked} 
                                 onChange={() => setPrivacyChecked(prev => !prev)}  
-                                id="privCheckbox"></input>
+                                id="privCheckbox"
+                                className="sr-only"
+                                onKeyDown={(e) => {
+                                        if (e.key === 'Enter' || e.key === ' ') {
+                                        e.preventDefault(); // Prevent space from scrolling the page
+                                        setPrivacyChecked(prev => !prev); // Toggle checkbox state
+                                        }
+                                }}></input>
                             <label htmlFor="privCheckbox" className="text-xs pt-0 md:pt-0.5"><span className="font-bold">I confirm</span> that I have read and understood the Privacy Policy.</label>
                             <input type="checkbox" name="age" 
                                 checked={consentChecked} 
                                 onChange={() => setConsentChecked(prev => !prev)}  
-                                id="consentCheckbox"></input>
+                                id="consentCheckbox"
+                                className="sr-only"
+                                onKeyDown={(e) => {
+                                        if (e.key === 'Enter' || e.key === ' ') {
+                                        e.preventDefault(); // Prevent space from scrolling the page
+                                        setConsentChecked(prev => !prev); // Toggle checkbox state
+                                        }
+                                }}></input>
                             <label htmlFor="consentCheckbox" className="text-xs pt-0 md:pt-0.5"><span className="font-bold">I consent</span> to the storage and processing of the data provided in the <span className="font-bold">Prediction Text Box</span> and the <span className="font-bold">Feedback Text Box</span>.</label>
                         </div>
                         <button onClick={() => setPopupContent('initial')} className="font-bold text-sm w-1/3 items-center mt-4 px-4 md:px-6 py-3 bg-amber-50 border border-2 border-amber-300 rounded-xl shadow-[0px_4px_25px_0px_rgba(242,205,92,0.20)
@@ -403,6 +424,7 @@ The primary (and only) goal of our website is to let you access the Machine Lear
             />
             <p className="text-xs text-[#BF0404] p-4">bad and offensive language identification</p>
             <div className="relative w-full px-5 md:px-20">
+                <label htmlFor="hatespeechText" className="sr-only">Enter text for Hate Speech Detection</label>
                 <textarea
                     aria-label="Enter Text"
                     rows="3.5"
@@ -412,6 +434,7 @@ The primary (and only) goal of our website is to let you access the Machine Lear
                     value={text}
                     onChange={handleChange}
                     placeholder="enter text for hate speech detection"
+                    id="hatespeechText"
                 />
                 <button
                     aria-label="Submit Text"
@@ -431,7 +454,15 @@ The primary (and only) goal of our website is to let you access the Machine Lear
                 <input type="checkbox" name="privacy" 
                 checked={isChecked} 
                 onChange={() => setIsChecked(prev => !prev)}  
-                id="privacyCheckbox"></input>
+                id="privacyCheckbox"
+                tabIndex="0"
+                className="sr-only"  // Use sr-only (screen-reader only) class to hide the input but keep it focusable
+                onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault(); // Prevent space from scrolling the page
+                        setIsChecked(prev => !prev); // Toggle checkbox state
+                        }
+                }}></input>
                 <label htmlFor="privacyCheckbox" className="text-[0.6rem] md:text-xs pt-0 md:pt-0.5">I have read the understood the <Link href="/privacy-policy" className="link-underline border border-2 border-transparent focus:border-amber-300 font-bold">Privacy Policy</Link>.</label>
             </div>
 

@@ -79,7 +79,11 @@ textarea {
 
 input[type="checkbox"] {
   appearance: none;
-  display: none;
+  position: absolute; 
+  width: 0;
+  height: 0;
+  opacity: 0;  /* Make it invisible */
+  pointer-events: none;  /* Disable pointer events (clicking directly on the checkbox won't work) */
 }
 
 input[type="checkbox"] + label {
@@ -105,6 +109,17 @@ input[type="checkbox"] + label::before {
   transition: background-color 0.2s ease, border 0.2s ease;
 }
 
+/* make it focusable */
+input[type="checkbox"]:focus + label::before {
+  border-color: #BF0404;
+  border-width: 3;
+}
+
+input[type="checkbox"]:focus + label::after {
+  border-color: #BF0404;
+  border-width: 3;
+}
+
 /* When checkbox is checked */
 input[type="checkbox"]:checked + label::before {
   background-color: #F2CD5C;
@@ -125,4 +140,15 @@ input[type="checkbox"]:checked + label::after {
 /* Hover effect */
 input[type="checkbox"]:hover + label::before {
   border-color: #FCDD81;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  overflow: hidden;
 }
