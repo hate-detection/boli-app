@@ -504,7 +504,6 @@ The primary (and only) goal of our website is to let you access the Machine Lear
                                 closeOnDocumentClick={false}
                                 onClose={() => setPopup("")}
                                 position="right center" modal nested
-                                tabIndex="0"
                             >
                                 <motion.div 
                                 id="feedbackSubmission"
