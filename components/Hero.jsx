@@ -333,6 +333,7 @@ The primary (and only) goal of our website is to let you access the Machine Lear
                         <h2 className="font-bold text-sm pt-5 pb-3">Do you agree with the label?</h2>
                         <p className="text-sm">You selected: <button className="font-bold text-xs md:text-sm text-amber-300 px-5 py-2.5 ml-2 bg-black border border-black rounded-xl shadow-[0px_4px_25px_0px_rgba(242,205,92,0.20)">{feed === 1 ? "YES" : "NO" }</button></p>
                         <h2 className="font-bold text-sm pt-5 pb-3">Please tell us more:</h2>
+                        <label htmlFor="feedbackText" className="sr-only">Enter feedback</label>
                         <textarea
                             title="Enter Feedback"
                             rows="4"
@@ -342,6 +343,8 @@ The primary (and only) goal of our website is to let you access the Machine Lear
                             value={feedText}
                             onChange={e => setfeedText(e.target.value)}  // change feedText to user value
                             placeholder="enter feedback"
+                            id="feedbackText"
+                            aria-label="feedback"
                         />
                         <button onClick={handleFeedbackSumit} className="font-bold text-sm w-1/3 items-center mt-4 px-4 md:px-6 py-3 bg-amber-50 border border-2 border-amber-300 rounded-xl shadow-[0px_4px_25px_0px_rgba(242,205,92,0.20)
                         hover:bg-amber-300 hover:text-black hover:border hover:border-2 hover:border-amber-300 hover:cursor-pointer hover:transition hover:duration-300
@@ -501,8 +504,10 @@ The primary (and only) goal of our website is to let you access the Machine Lear
                                 closeOnDocumentClick={false}
                                 onClose={() => setPopup("")}
                                 position="right center" modal nested
+                                tabIndex="0"
                             >
                                 <motion.div 
+                                id="feedbackSubmission"
                                 initial={{scale: 0}}
                                 animate={{scale: 1}}
                                 transition={{duration: 0.2}}
@@ -519,7 +524,7 @@ The primary (and only) goal of our website is to let you access the Machine Lear
                 <div className="flex flex-col items-center justify-center">
                     <p className="text-[0.6rem] md:text-[0.7rem] pb-2">This project is designed and developed for the Masters Thesis Submission 
                     as part of the requirement for the award of MSc Cyber Security at Royal Holloway, University of London.</p>
-                    <Link href="/thesis" className="flex items-center font-bold border border-2 border-transparent justify-center link-underline focus:border focus:border-2 focus:border-amber-300"><p className="text-[0.6rem] md:text-[0.7rem] pr-1">Read the thesis</p><MdArrowOutward size={10}/></Link>
+                    <Link href="/thesis" className="flex items-center font-bold border border-2 border-transparent justify-center link-underline focus:border focus:border-2 focus:border-amber-300"><p className="text-[0.6rem] md:text-[0.7rem] pr-1">Read the thesis</p><MdArrowOutward aria-label="Outward Arrow Icon" size={10}/></Link>
                 </div>
             </footer>
             </div>
