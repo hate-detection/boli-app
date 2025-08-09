@@ -44,7 +44,7 @@ export default function About() {
           href="/thesis">Read the Thesis</Link>.
           <br></br>
           <br></br>
-          <span className="italic">Boli</span> is also accessible via an API. <Link className="font-bold link-underline" href="#">Read the docs
+          <span className="italic">Boli</span> is also accessible via an API. <Link className="font-bold link-underline" href="https://boli.gitbook.io/api">Read the docs
           </Link> to know more about how to get predictions via the API.
           </p> 
 
