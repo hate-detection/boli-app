@@ -363,7 +363,7 @@ The primary (and only) goal of our website is to let you access the Machine Lear
                     <h2 className="font-bold text-md p-2 md:p-5">Thank you for your feedback!</h2>
                     <MdCheck size={120} aria-label="Check Mark Icon" className="bg-[#FFFCED] border border-amber-300 rounded-full p-5 mt-3 mb-2 text-[#BF0404]"/>
                     <p className="text-[0.7rem] mt-8">To know more about how your feedback</p>
-                    <p className="text-[0.7rem]">will be used, check out our <Link href="#" className="underline">Privacy Policy</Link>.</p>
+                    <p className="text-[0.7rem]">will be used, check out our <Link href="/privacy-policy" className="underline">Privacy Policy</Link>.</p>
                     <button
                         className="font-bold text-sm w-1/3 items-center mt-5 px-5 py-3 bg-amber-50 border border-2 border-amber-300 rounded-xl shadow-[0px_4px_25px_0px_rgba(242,205,92,0.20)]
                         hover:bg-amber-300 hover:text-black hover:border hover:border-2 hover:border-amber-300 hover:cursor-pointer hover:transition hover:duration-300
