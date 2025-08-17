@@ -24,8 +24,7 @@ export default function About() {
             quality={100}
             className="mt-10 rounded-xl pb-2"
             />
-            <figcaption className="text-xs italic">A venomous demon pours out of a smartphone. (Illustration by: <Link href="https://shrutipriya.com"
-            target="_blank" className="link-underline">Shruti Priya)</Link></figcaption>
+            <figcaption className="text-xs italic">A venomous demon pours out of a smartphone.</figcaption>
           </figure>
           <p className="text-md py-5">Online hate speech and digital abuse snatches away a person's right to dignity and scars them
             for the rest of their lives. As multiple documented instances prove, hate speech often culminates into real-life violence.
