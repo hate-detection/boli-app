@@ -25,6 +25,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const { text } = req.body;
     const cleanedText = text.replace(/[\n\r\t]/gm, "");
 
+    if (cleanedText == "") {
+      return res.status(400).json({ message: "Bad Request. text field cannot be empty" })
+    }
+
     const backendUrl = process.env.PREDICT_ENDPOINT as string;
     
     const response = await fetch(backendUrl, {
@@ -68,6 +72,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(200).json(result);
 
   } catch (error) {
-    return res.status(500).json({ message: 'Internal Server Error', error: (error as Error).message });
+    return res.status(500).json({ message: 'Internal Server Error' });
   }
 }
