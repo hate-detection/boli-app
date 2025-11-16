@@ -44,6 +44,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     // If backend fails, respond with an error
     if (!response.ok) {
+      console.log(response.headers)
       console.log(response)
       return res.status(500).json({ message: 'Failed to fetch data from backend' });
     }
