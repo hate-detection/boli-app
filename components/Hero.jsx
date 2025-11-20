@@ -450,7 +450,8 @@ The primary (and only) goal of our website is to let you access the Machine Lear
                             submitData(); // Call submitData only if text is not empty
                         }
                     }}
-                    disabled={loading || !isSubmit || !isChecked}
+                    //disabled={loading || !isSubmit || !isChecked}
+                    disabled={true}
                 >
                 <IoMdArrowForward size={20} aria-label="Submit Button"/>
                 </button>
@@ -467,6 +468,12 @@ The primary (and only) goal of our website is to let you access the Machine Lear
                         }
                 }}></input>
                 <label htmlFor="privacyCheckbox" className="text-[0.6rem] md:text-xs pt-0 md:pt-0.5">I have read the understood the <Link href="/privacy-policy" className="link-underline border border-2 border-transparent focus:border-amber-300 font-bold">Privacy Policy</Link>.</label>
+            </div>
+
+            {/* Notice Stuff */}
+            <div className="flex flex-col px-10 rounded-2xl items-center justify-center bg-amber-50 border border-2 border-red-400 mt-5 text-red-500 p-4">
+                    <h2 className="text-md">Server Error</h2>
+                    <p className="text-xs pt-3">BOLI server is currently down due to unforeseen circumstances.<br></br>We are working hard to fix it, please try again later.<br></br><br></br><span className="font-bold">ETA: 20th November, 11:00 PM +5:30 GMT</span></p>
             </div>
 
             
