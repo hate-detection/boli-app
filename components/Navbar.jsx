@@ -55,7 +55,7 @@ const Navbar = () => {
               privacy policy
             </li>
           </Link>
-          <Link href='https://boli.gitbook.io/api' target="_blank" className="nav-links hover:cursor-pointer mx-4 font-bold link-underline border border-2 border-transparent focus:border focus:border-2 focus:border-amber-300">
+          <Link href='https://boli.gitbook.io/api/' target="_blank" className="nav-links hover:cursor-pointer mx-4 font-bold link-underline border border-2 border-transparent focus:border focus:border-2 focus:border-amber-300">
             <li className="">
               api docs
             </li>
@@ -89,7 +89,7 @@ const Navbar = () => {
             privacy policy
           </li>
         </Link>
-        <Link href='https://boli.gitbook.io/api' target="_blank" className="nav-links p-4 border border-3 border-transparent cursor-pointer text-2xl link-underline-mob focus:border-black">
+        <Link href='https://boli.gitbook.io/api/' target="_blank" className="nav-links p-4 border border-3 border-transparent cursor-pointer text-2xl link-underline-mob focus:border-black">
           <li className="">
             api docs
           </li>
