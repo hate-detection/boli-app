@@ -530,7 +530,7 @@ The primary (and only) goal of our website is to let you access the Machine Lear
                 <div className="flex flex-col items-center justify-center">
                     <p className="text-[0.6rem] md:text-[0.7rem] pb-2">This project is designed and developed for the Masters Thesis Submission 
                     as part of the requirement for the award of MSc Cyber Security at Royal Holloway, University of London.</p>
-                    <Link href="/thesis" className="flex items-center font-bold border border-2 border-transparent justify-center link-underline focus:border focus:border-2 focus:border-amber-300"><p className="text-[0.6rem] md:text-[0.7rem] pr-1">Read the thesis</p><MdArrowOutward aria-label="Outward Arrow Icon" size={10}/></Link>
+                    <Link href="https://doi.org/10.13140/RG.2.2.11381.44004" className="flex items-center font-bold border border-2 border-transparent justify-center link-underline focus:border focus:border-2 focus:border-amber-300"><p className="text-[0.6rem] md:text-[0.7rem] pr-1">Read the thesis</p><MdArrowOutward aria-label="Outward Arrow Icon" size={10}/></Link>
                 </div>
             </footer>
             </div>
