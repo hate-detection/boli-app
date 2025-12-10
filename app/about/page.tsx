@@ -40,7 +40,7 @@ export default function About() {
           <br></br>
           If you are interested in the more technical aspects of <span className="italic">Boli</span>, check out the <Link className="font-bold 
           link-underline" href="https://github.com/hate-detection/" target="_blank">source code</Link> or <Link className="font-bold link-underline"
-          href="/thesis">Read the Thesis</Link>.
+          href="https://doi.org/10.13140/RG.2.2.11381.44004" target="_blank">Read the Thesis</Link>.
           <br></br>
           <br></br>
           <span className="italic">Boli</span> is also accessible via an API. <Link className="font-bold link-underline" href="https://boli.gitbook.io/api" target="_blank">Read the docs
