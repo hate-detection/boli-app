@@ -7,6 +7,7 @@ import logo from "../assets/logo.png";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { RiMenu4Fill } from "react-icons/ri";
+import { BsTwitterX } from "react-icons/bs";
 
 const variants = {
   open: { opacity: 1, x: 0 },
@@ -60,6 +61,11 @@ const Navbar = () => {
               api docs
             </li>
           </Link>
+          <Link href='https://x.com/boli_app' target="_blank" className="nav-links hover:cursor-pointer mx-4 border border-2 border-transparent focus:border focus:border-2 focus:border-amber-300">
+            <li className="">
+              <BsTwitterX className="fill-black hover:fill-[#BF0404]" size={20}/>
+            </li>
+          </Link>
         </ul>
       </motion.ul>
 
@@ -93,6 +99,11 @@ const Navbar = () => {
           <li className="">
             api docs
           </li>
+        </Link>
+        <Link href='https://x.com/boli_app' target="_blank" className="nav-links p-4 border border-3 border-transparent cursor-pointer focus:border focus:border-3 focus:border-black">
+            <li className="">
+              <BsTwitterX className="fill-black hover:fill-[#BF0404] " size={30}/>
+            </li>
         </Link>
       </motion.ul>
     </nav>
